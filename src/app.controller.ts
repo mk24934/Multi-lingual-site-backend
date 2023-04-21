@@ -3,8 +3,6 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  private appService: AppService; 
-
   constructor(private readonly appService: AppService) {}
 
   @Get()
@@ -14,7 +12,13 @@ export class AppController {
 
   @Post('/day')
   async getGreeting(@Body() body: { day: string }): Promise<string> {
+    console.log("body is: ", body)
     const day = body.day;
     return `Today is ${day}!`;
+  }
+
+  @Get('/hi')
+  getHi(): string{
+    return "Hi!";
   }
 }

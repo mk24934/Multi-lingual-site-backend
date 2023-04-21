@@ -10,14 +10,11 @@ RUN apt-get update && \
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y nodejs
 
-# set working directory
-RUN mkdir /root/NestServer.ts
-
 # Set the working directory
-WORKDIR /root/NestServer.ts
+WORKDIR /app
 
-# Copy contents into the container
-COPY . .
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
